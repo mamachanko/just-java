@@ -1,0 +1,21 @@
+---
+image: mamachanko/just-java
+
+---
+apiVersion: kbld.k14s.io/v1alpha1
+kind: Config
+sources:
+  - image: mamachanko/just-java
+    path: .
+    pack:
+      build:
+        builder: paketobuildpacks/builder-jammy-tiny
+        rawOptions:
+          - --env=BP_JVM_VERSION=17
+          - --env=BP_SPRING_CLOUD_BINDINGS_DISABLED=true
+          - --env=BPL_SPRING_CLOUD_BINDINGS_DISABLED=true
+          - '--env=BPE_DELIM_JAVA_TOOL_OPTIONS= ' #! single-quoted b/c whitespace
+          - --env=BPE_APPEND_JAVA_TOOL_OPTIONS=-XX:ActiveProcessorCount=1
+destinations:
+  - image: mamachanko/just-java
+    newImage: index.docker.io/mamachanko/just-java
