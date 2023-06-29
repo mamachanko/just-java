@@ -12,8 +12,6 @@ sources:
         builder: paketobuildpacks/builder-jammy-tiny
         rawOptions:
           - --env=BP_JVM_VERSION=17
-          - --env=BP_SPRING_CLOUD_BINDINGS_DISABLED=true
-          - --env=BPL_SPRING_CLOUD_BINDINGS_DISABLED=true
           - '--env=BPE_DELIM_JAVA_TOOL_OPTIONS= ' #! single-quoted b/c whitespace
           - --env=BPE_APPEND_JAVA_TOOL_OPTIONS=-XX:ActiveProcessorCount=1
 destinations:
